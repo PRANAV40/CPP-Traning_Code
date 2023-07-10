@@ -1,0 +1,3 @@
+﻿  main.cpp
+C:\Users\pranav.mishra\Desktop\VS 2019\Destructor1\main.cpp(5,34): warning C4305: 'argument': truncation from 'double' to 'float'
+  Destructor1.vcxproj -> C:\Users\pranav.mishra\Desktop\VS 2019\CopyConstructor1\Debug\Destructor1.exe
