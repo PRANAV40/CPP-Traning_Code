@@ -1,0 +1,9 @@
+﻿  Constructor.cpp
+C:\Users\pranav.mishra\Desktop\VS 2019\AllConstructor\Constructor.h(20,9): error C2371: 'Complex::obj': redefinition; different basic types
+C:\Users\pranav.mishra\Desktop\VS 2019\AllConstructor\Constructor.h(19): message : see declaration of 'Complex::obj'
+C:\Users\pranav.mishra\Desktop\VS 2019\AllConstructor\Constructor.cpp(3,19): error C2248: 'student::student': cannot access private member declared in class 'student'
+C:\Users\pranav.mishra\Desktop\VS 2019\AllConstructor\Constructor.h(6): message : see declaration of 'student::student'
+C:\Users\pranav.mishra\Desktop\VS 2019\AllConstructor\Constructor.h(5): message : see declaration of 'student'
+C:\Users\pranav.mishra\Desktop\VS 2019\AllConstructor\Constructor.cpp(9,31): error C2248: 'student::student': cannot access private member declared in class 'student'
+C:\Users\pranav.mishra\Desktop\VS 2019\AllConstructor\Constructor.h(6): message : see declaration of 'student::student'
+C:\Users\pranav.mishra\Desktop\VS 2019\AllConstructor\Constructor.h(5): message : see declaration of 'student'
