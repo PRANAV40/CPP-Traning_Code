@@ -1,0 +1,349 @@
+1st Program:-
+#include <iostream> 
+using namespace std; 
+enum note { middleC, Csharp, Cflat }; // Etc. 
+class Instrument { 
+public: 
+ virtual void play(note) const { 
+ cout << "Instrument::play" << endl; 
+ } 
+ virtual char* what() const { 
+ return "Instrument"; 
+ } 
+ // Assume this will modify the object: 
+ virtual void adjust(int) {} 
+}; 
+class Wind : public Instrument { 
+public: 
+ void play(note) const { 
+ cout << "Wind::play" << endl; 
+ } 
+ char* what() const { return "Wind"; } 
+ void adjust(int) {} 
+}; 
+class Percussion : public Instrument { 
+public: 
+ void play(note) const { 
+ cout << "Percussion::play" << endl; 
+ } 
+ char* what() const { return "Percussion"; } 
+ void adjust(int) {} 
+}; 
+class Stringed : public Instrument { 
+public: 
+ void play(note) const { 
+ cout << "Stringed::play" << endl; 
+ } 
+ char* what() const { return "Stringed"; } 
+ void adjust(int) {} 
+}; 
+class Brass : public Wind { 
+public: 
+ void play(note) const { 
+ cout << "Brass::play" << endl; 
+ } 
+ char* what() const { return "Brass"; } 
+}; 
+class Woodwind : public Wind { 
+public: 
+ void play(note) const { 
+ cout << "Woodwind::play" << endl; 
+ } 
+ char* what() const { return "Woodwind"; } 
+}; 
+// Identical function from before: 
+void tune(Instrument& i) { 
+ // ... 
+ i.play(middleC); 
+} 
+// New function: 
+void f(Instrument& i) { i.adjust(1); } 
+Instrument* A[] = { 
+ new Wind, 
+ new Percussion, 
+ new Stringed, 
+ new Brass, 
+}; 
+int main() { 
+ Wind flute; 
+ Percussion drum; 
+ Stringed violin; 
+ Brass flugelhorn; 
+ Woodwind recorder; 
+ tune(flute); 
+ tune(drum); 
+ tune(violin); 
+ tune(flugelhorn); 
+ tune(recorder); 
+ f(flugelhorn); 
+}
+
+2nd Program:-
+#include <iostream> 
+#include <string> 
+using namespace std; 
+class Pet { 
+public: 
+ virtual string speak()  { return ""; } 
+}; 
+class Dog : public Pet { 
+public: 
+ string speak() { return "Bark!"; } 
+}; 
+int main() { 
+ Dog ralph; 
+ Pet* p1 = &ralph; 
+ Pet& p2 = ralph; 
+ Pet p3; 
+ // Late binding for both: 
+ cout << "p1->speak() = " << p1->speak() <<endl; 
+ cout << "p2.speak() = " << p2.speak() << endl; 
+ // Early binding (probably): 
+ cout << "p3.speak() = " << p3.speak() << endl; 
+} 
+
+3rd Program:-
+
+#include <iostream> 
+using namespace std; 
+enum note { middleC, Csharp, Cflat }; // Etc. 
+class Instrument { 
+public: 
+ // Pure virtual functions: 
+ virtual void play(note) = 0; 
+ virtual char* what() = 0; 
+ // Assume this will modify the object: 
+virtual void adjust(int) = 0; 
+}; 
+// Rest of the file is the same ... 
+class Wind : public Instrument { 
+public: 
+ void play(note) { 
+ cout << "Wind::play" << endl; 
+ } 
+ char* what() { return "Wind"; } 
+ void adjust(int) {} 
+}; 
+class Percussion : public Instrument { 
+public: 
+ void play(note) { 
+ cout << "Percussion::play" << endl; 
+ } 
+ char* what() { return "Percussion"; } 
+ void adjust(int) {} 
+}; 
+class Stringed : public Instrument { 
+public: 
+ void play(note) { 
+ cout << "Stringed::play" << endl; 
+ } 
+ char* what() { return "Stringed"; } 
+ void adjust(int) {} 
+}; 
+class Brass : public Wind { 
+public: 
+ void play(note) { 
+ cout << "Brass::play" << endl; 
+ } 
+ char* what() { return "Brass"; } 
+}; 
+class Woodwind : public Wind { 
+public: 
+ void play(note) { 
+ cout << "Woodwind::play" << endl; 
+ } 
+ char* what() { return "Woodwind"; } 
+}; 
+// Identical function from before: 
+void tune(Instrument& i) { 
+ // ... 
+ i.play(middleC); 
+} 
+// New function: 
+void f(Instrument& i) { i.adjust(1); } 
+int main() { 
+ Wind flute; 
+ Percussion drum; 
+ Stringed violin; 
+ Brass flugelhorn; 
+ Woodwind recorder; 
+ tune(flute); 
+ tune(drum); 
+ tune(violin); 
+ tune(flugelhorn); 
+ tune(recorder); 
+ f(flugelhorn); 
+}
+
+4th Program:-
+
+#include <iostream> 
+using namespace std; 
+class Pet { 
+public: 
+ virtual void speak()  = 0; 
+ virtual void eat() = 0; 
+ // Inline pure virtual definitions illegal: 
+ //virtual void sleep() const = 0 {} 
+}; 
+// OK, not defined inline 
+void Pet::eat() { 
+ cout << "Pet::eat()" << endl; 
+} 
+void Pet::speak() { 
+ cout << "Pet::speak()" << endl; 
+} 
+class Dog : public Pet { 
+public: 
+ // Use the common Pet code: 
+ void speak() { Pet::speak(); } 
+ void eat()  { Pet::eat(); }
+}; 
+int main() { 
+ Dog simba; // Richard's dog 
+ simba.speak(); 
+ simba.eat(); 
+}
+
+5th Program:-
+
+#include <iostream> 
+#include <string> 
+using namespace std; 
+class Pet { 
+ string pname; 
+public: 
+Pet(const string& petName) : pname(petName) {} 
+ virtual string name() const { return pname; } 
+ virtual string speak() const { return ""; } 
+}; 
+class Dog : public Pet { 
+ string name; 
+public: 
+ Dog(const string& petName) : Pet(petName) {} 
+ // New virtual function in the Dog class: 
+ virtual string sit() const { 
+ return Pet::name() + " sits"; 
+ } 
+ string speak() const { // Override 
+ return Pet::name() + " says 'Bark!'"; 
+ } 
+}; 
+int main() { 
+ Pet* p[] = {new Pet("generic"),new Dog("bob")}; 
+ cout << "p[0]->speak() = " 
+ << p[0]->speak() << endl; 
+ cout << "p[1]->speak() = " 
+ << p[1]->speak() << endl; 
+//! cout << "p[1]->sit() = " 
+//! << p[1]->sit() << endl; // Illegal 
+} 
+
+6th Program:-
+
+#include <iostream> 
+#include <string> 
+using namespace std; 
+class Base { 
+public: 
+ virtual int f() const { 
+ cout << "Base::f()\n"; 
+ return 1; 
+ } 
+ virtual void f(string) const {} 
+ virtual void g() const {} 
+}; 
+class Derived1 : public Base { 
+public: 
+ void g() const {} 
+}; 
+class Derived2 : public Base { 
+public: 
+ // Overriding a virtual function: 
+ int f() const { 
+ cout << "Derived2::f()\n";
+ return 2; 
+ } 
+}; 
+class Derived3 : public Base { 
+public: 
+ // Cannot change return type: 
+ //! void f() const{ cout << "Derived3::f()\n";} 
+}; 
+class Derived4 : public Base { 
+public: 
+ // Change argument list: 
+ int f(int) const { 
+ cout << "Derived4::f()\n"; 
+ return 4; 
+ } 
+}; 
+int main() { 
+ string s("hello"); 
+ Derived1 d1; 
+ int x = d1.f(); 
+ d1.f(s); 
+ Derived2 d2; 
+ x = d2.f(); 
+ Derived4 d4; 
+ x = d4.f(1); 
+ Base& br = d4; // Upcast 
+ br.f(); // Base version available 
+ br.f(s); // Base version abailable 
+}
+
+7th Program:-
+
+#include <iostream> 
+#include <string> 
+using namespace std; 
+class PetFood { 
+public: 
+ virtual string foodType() = 0; 
+}; 
+class Pet { 
+public: 
+ virtual string type() = 0; 
+ virtual PetFood* eats() = 0;
+}; 
+class Bird : public Pet { 
+public: 
+ string type()  { return "Bird"; } 
+ class BirdFood : public PetFood { 
+ public: 
+ string foodType() const { 
+ return "Bird food"; 
+ } 
+ }; 
+ // Upcast to base type: 
+ PetFood* eats() { return &bf; } 
+private: 
+ BirdFood bf; 
+}; 
+class Cat : public Pet { 
+public: 
+ string type() const { return "Cat"; } 
+ class CatFood : public PetFood { 
+ public: 
+ string foodType() const { return "Birds"; } 
+ }; 
+ // Return exact type instead: 
+ CatFood* eats() { return &cf; } 
+private: 
+ CatFood cf; 
+}; 
+int main() { 
+ Bird b; 
+ Cat c; 
+ Pet* p[] = { &b, &c, }; 
+ for(int i = 0; i < sizeof p / sizeof *p; i++) 
+ cout << p[i]->type() << " eats " 
+ << p[i]->eats()->foodType() << endl; 
+ // Can return the exact type: 
+ Cat::CatFood* cf = c.eats(); 
+ Bird::BirdFood* bf; 
+ // Cannot return the exact type: 
+//! bf = b.eats(); 
+ // Must downcast: 
+ bf = dynamic_cast<Bird::BirdFood*>(b.eats()); 
+}

@@ -1,0 +1,538 @@
+1. Find out what is the value that is printed when you print value held by pointer variable Done
+2. What is the return type of comparision operator  Done
+3. Find out the different between union and structure   Done
+4. Function calling machenisium		Done
+5. Pointer Airthmetics	Done
+6. Find out the details of formal and actual parameters  Done
+7. Find out the debuging steps   
+8. Convert tha all the program in Visual Studio Project In Progress
+
+Find out different types of cpp visual studio project 
+	-Windows Desktop
+	-General
+	-ATL
+	-Test
+	-MFC
+	-Windows Universal Apps
+
+Find out the different between solution and project in visual studio
+	-The difference between solution files and project files is that a project file holds information specific to that project, 
+	 unaware of its solution (though, Visual Studio will look up the hierarchy to an extent in an attempt find the relevant 
+	 solution when opening a project, if one exists); the solution file is aware of all projects that are part of that solution 
+	 and references each of them (such as a directory of files, if you like, but with projects), it also contains solution-wide 
+	 information / configuration, that can be applicable to all projects within the solution.
+Find out the meaning of Std;
+	-
+Thread sysncronistation explore
+	-Thread Synchronization on different processes:
+	 Event:
+	 Event is a thread synchronization object used to set the signaled or non-signaled state. The signaled state may be manual or automatic depending on the event declaration.
+
+	 Mutex:
+	 Mutex is the thread synchronization object which allows to access the resource only one thread at a time. Only when a process goes to the signaled state are the other resources allowed to access.
+
+	 Semaphore:
+	 Semaphore is a thread synchronization object that allows zero to any number of threads access simultaneously.
+	-Thread Synchronization in same process:
+	 Critical Section
+	 Win32 Wait Functions:
+	 MFC Lock/Unlock Resource:
+	 
+How to copy the data from 1st thrad to 2nd thread and the data of 2nd thread to 3rd thread after 3rd thread the data of 3rd thread copy
+in to the 1st thread this is continue to till the data is complete.
+
+Reference Variable Done    "Reference variable is an alternate name of already existing variable."
+	int a;
+	int &b = a;
+	cout << b << endl;
+Data Types   	Types: Primtive, Derived, Abstruct 
+Function	Types of Function
+	- Standard Library Functions:
+	- User-defined Function:
+Call By Value   Done "Copy of value is to passed in the function."
+Call By Reference  Done  "An address of value is to passed in the function."
+Pointer Reference Done    
+Call by Pointer  Done "The call by pointer method of passing arguments to a function copies the address of an argument into the formal parameter."
+Memory Management  In Progress New operator constructs an object. Syntax(int *p = new int; and int *p = new int(45);)  
+	malloc() Syntax(data type variable_name = (data type *)malloc(sizeof(type));)
+	Delete Operator is used to de-allocate the memory dynamically. Syntax(delete p;)
+	free() function is used in C++ to de-allocate the memory dynamically.  Syntax(free(ptr);)
+	Single dimensional array Syntax(int *a1 = new int[8];)
+
+Structure and class difference		       				
+Structures:  
+A structure is a user-defined data type which is constructed the help of primtive and derived data type. 
+	It can store more then one values of different types of data types of different-different memory location.
+	It can store more then one values of different types of data types of different-different memory location.
+	The minimum size of struct is 1 bytes.
+	An instance of structure is called the ‘structure variable’.
+	The size of struct is sum of all data members size. 
+	We can also inherit the structure like as class.
+	It is normally used for the grouping of data.
+Inheritance is possible with classes, and with structures
+Class: 	Members of a class are private by default.
+		Member classes/structures of a class are private by default but not all programming languages have this default behavior eg Java etc.
+		It is declared using the class keyword.
+		It is normally used for data abstraction and further inheritance.
+
+What is Polymorphism in C++?
+The word polymorphism means having many forms. In simple words, we can define polymorphism as the ability of a message to be displayed in more than one form.
+
+Types of Polymorphism in C++:
+C++ supports two types of polymorphism:-
+
+Compile-time Polymorphism (Example: Function Overloading, and Operator Overloading)
+Runtime Polymorphism (Example: Function Overriding and Virtual Functions)
+
+Compile Time Polymorphism in C++:
+This type of polymorphism is achieved by function overloading or operator overloading. The overloaded functions are invoked by matching the type and number of arguments. The information is present during compile-time. This means the C++ compiler will select the right function at compile time. Compile-time polymorphism is achieved through function overloading and operator overloading which is also known as static binding or early binding.
+
+Function Overloading in C++
+When there are multiple functions with the same name but different parameters then these functions are said to be overloaded. Functions can be overloaded by changes in the number of arguments or/and changes in the type of arguments. That means function overloading in C++ occurs when we have many functions with similar names but different arguments.
+
+What are Operators?
+An operator is a symbol that tells the compiler to perform specific mathematical, logical calculations or some other special operations.
+
+What is Operator Overloading in C++?
+In C++, we can make operators work for user-defined classes. This means C++ has the ability to provide the operators with a special meaning for a data type, this ability is known as operator overloading. For example, we can overload the + operator in a class like String so that we can concatenate two strings by just using +.
+
+Using operator overloading in C++, we can specify more than one meaning for an operator in one scope. The purpose of operator overloading is to provide a special meaning of an operator for a user-defined data type.
+Operators that can be performed	        Examples
+    Binary Arithmetic	       +, -, *, /, %
+    Unary Arithmetic 	       +, -, ++, —
+    Assignment	               =, +=,*=, /=,-=, %=
+    Bitwise	                   & , | , << , >> , ~ , ^
+    De-referencing	           (->)
+    Dynamic memory allocation, New,
+    De-allocation			   delete 
+    Subscript				   []
+    Function call 		       ()
+    Logical 				   &,  | |, !
+    Relational				   >, < , = =, <=, >=
+			   
+To overload an operator in C++, we use a special operator function. We define the function inside the class or structure whose objects/variables we want the overloaded operator to work with. The Syntax for Operator Overloading as shown in the below image.
+
+Run Time Polymorphism or Dynamic Polymorphism
+Function Overriding
+	Function overriding is the mechanism using which a function defined in the base class is once again defined in the derived class. In this case, we say the function is overridden in the derived class.
+	We should remember that function overriding cannot be done within a class. The function is overridden in the derived class only. Hence inheritance should be present for function overriding.
+	The second thing is that the function from a base class that we are overriding should have the same signature or prototype i.e. it should have the same name, same return type and same argument list. 
+	---> Function Overriding
+	If we use the function without virtual keyword It is called Early binding.
+	For the overridden function should be bound dynamically to the function body, we make the base class function virtual using the “virtual” keyword. This virtual function is a function that is overridden in the derived class and the compiler carries out late or dynamic binding for this function.
+Virtual Function: 
+	We use pointer object in late binding then we acchieved the Run time polymorphism.
+	If we can not use virtual keyword in function and pointer in object of base class then we acchieved early binding in compile-time time polymorphism.
+	---> Virtual Function
+		Virtual keyword tells the compiler not to make the decision (of function binding) at compile time, rather postpone it for runtime".
+You can make a function virtual by preceding the keyword virtual in its base class declaration.
+If we use the function with virtual keyword It is called Late binding or Run time polymorphism.
+What is the purpose of virtual function?
+	We use virtual functions to ensure that the correct function is called for an object, regardless of the reference type used to call the function. They are basically used to achieve the runtime polymorphism and are declared in the base class by using the virtual keyword before the function.
+	
+Inheritance:
+	Inheritance is the technique by which one class acquires the properties and methods of other class. This way we can reuse the code that is already written and verified. The class that acquires the properties of another class is called the subclass or derived class or child class.
+	The class whose properties are acquired is called the base class or parent class or superclass. When one class acquires or inherits another class, then all the properties and methods of the base class are available for the derived class, so that we can reuse this code.
+Modes Of Inheritance
+Public Inheritance
+General syntax
+class sub_class : public parent_class
+When public access specifier is specified, the public members of the base class are inherited as public while protected members are protected. Private members remain private. This is the most popular mode of inheritance.
+
+Private Inheritance
+General Syntax
+class sub_class : parent_class
+Private inheritance does not inherit anything. When private access specifier is used, public and protected members of the base class also become private.
+
+Protected Inheritance
+General Syntax
+class sub_class:protected parent_class
+When protected access specifier is used, public and protected members of the base class become protected members in the derived class.
+
+Single Inheritance
+	Parents Class -----> Child Class
+	
+Constructor and Destructor calling sequnce in inheritance
+1. Normal object creation
+	-Parent class Constructor 
+	-Child class Constructor 
+	-Child class Destructor 
+	-Parent class Destructor
+	-Parent class Parameterized Constructor
+	-Child class Parameterized Constructor
+	Order of calling sequnce Constructor and Destructor in inheritance isin normal object creation:- 
+	Base Class Default Constructor->Derived class Default Constructor->Derived class Destructor->Base class Destructor
+2. base Class object pointer
+	-Displaying Base class 
+	-Displaying Base class
+	Examples:
+	//Base Class object pointer
+	cout << "Base Class object pointer" << endl;
+	1st Methods:
+	Student* base_class_pointer;
+	Exam obj_Exam;
+	base_class_pointer = &obj_Exam;
+	2nd Methods:
+	Student* base_class_pointer = new Exam;
+	base_class_pointer->var_base = 34;
+	base_class_pointer->showValue();
+	base_class_pointer->var_base = 3400;
+	base_class_pointer->showValue();
+	cout << endl;
+3. dervired class object pointer
+	-Displaying Base class
+	-Displaying Derived class 
+	Examples: 
+	//Derived class object pointer
+	cout << "Derived class object pointer" << endl;
+	1st Methods:
+	Exam* derived_class_pointer;
+	Exam obj_Exams;
+	derived_class_pointer = &obj_Exams;
+	2nd Methods:
+	Exam* derived_class_pointer = new Exam(68);
+	derived_class_pointer->var_base = 9448;
+	derived_class_pointer->var_derived = 98;
+	derived_class_pointer->showValue();
+	cout << endl;
+Multilevel Inheritance
+	Parents Class -----> Derived Class1 -----> Derived Class2
+Multiple Inheritance
+	Parents Class1 -----> Parents Class2 -----> Derived Class
+Hybrid Inheritance:
+Herirchal Inheritance:
+
+Pointer: Variable that store address of other variables.
+	Syntax:
+	    int a;   //Integer variable
+	    int *p; //Pointer to integer
+		The address of the variable you’re working with is assigned to the pointer variable that points to the same data type.
+References and Pointers
+	    There are 3 ways to pass C++ arguments to a function:
+	    Call-By-Value
+	    Call-By-Reference with a Pointer Argument
+	    Call-By-Reference with a Reference Argument
+We do not use the pointer variable only to store memory address but we also use them to dereference these addresses so that we can 
+	access and modify the values in these addresses.
+Inheritance allows us to define a class in terms of another class, which makes it easier to create and maintain an application. This also provides an opportunity to reuse the code functionality and fast implementation time.
+  Types: Single, Multiple, Multilevel, Hirarichal and Hybrid
+Constructor: Constructor is a special method which is invoked automatically at the time of object creation.
+	Types: Default Constructor: It is a special method which is invoked automatically at the time of object creation.
+		   Parameterised Constructor: It which has parameters is called parameterized constructor. It is used to provide different values to distinct objects.
+						
+	Copy Constructor: A copy constructor is a member function that initializes an object using another object of the same class. 
+			In simple terms, a constructor which creates an object by initializing it with an object of the same class, 
+			which has been created previously is known as a copy constructor.  
+			If we don’t define our own copy constructor, the C++ compiler creates a default copy constructor for each class which does a member-wise copy between objects. The compiler-created copy constructor works fine in general. We need to define our own copy constructor only if an object has pointers or any runtime allocation of the resource like a file handle, a network connection, etc.
+			The default constructor does only shallow copy.
+			Deep copy is possible only with a user-defined copy constructor. In a user-defined copy constructor, we make sure that pointers (or references) of copied objects point to new memory locations.  
+	Purpose of CC::The purpose of a copy constructor in C++ is to create a new object as a copy of an existing object of the same class. 
+					It is a special member function that is used for initializing one object with another object of the same class. 
+					The copy constructor ensures that the new object has the same data as the existing object, providing a deep 
+					copy rather than a shallow copy.
+	Examples:
+		Syntax:
+		MyClass t1, t2;
+		MyClass t3 = t1;  // ----> (1)
+		t2 = t1;          // -----> (2) 
+	The assignment operator is called when an already initialized object is assigned a new value from another existing object. 
+	In the above example 
+		(1) calls the copy constructor 
+		(2) calls the assignment operator.
+	Assignment Operator:- 
+	What happens if we don't supply an assignment operator?
+	If you don't provide your own assignment operator for a class, the compiler generates one automatically. assigns each data member in turn.
+	We can handle the above problem in two ways:-
+	    Do not allow assignment of one object to other object. We can create our own dummy assignment operator and make it private.
+		Write your own assignment operator that does deep copy. The compiler created assignment operator may not be sufficient when we have pointers or any run time allocation of resource like file handle, a network connection..etc.
+	What is the purpose of assignment operators?
+	The assignment operators return the value of the object specified by the left operand after the assignment. The resultant type is the type of the left operand. The result of an assignment expression is always an l-value. These operators have right-to-left associativity.
+
+	Scenario call CC:
+	When is the copy constructor called? 
+	In C++, a Copy Constructor may be called in the following cases: 
+				When an object of the class is returned by value. 
+				When an object of the class is passed (to a function) by value as an argument. 
+				When an object is constructed based on another object of the same class. 
+				When the compiler generates a temporary object.
+Copy Constructor Syntax:
+class_name(const class_name& obj_name);
+Assignment operator overload Syntax:
+class_name& operator=(class_name& obj_name);
+	Implicit Copy assignment operator called
+Types of CC:
+	Default CC  or Implicit CC :Automaticly Created by complier
+	User-defined CC or Explicit CC : Its define by the user
+	Comparison between Copy Constructor and Assignment Operator
+	The main purpose of both the concepts in C++ is to assign the value, but the main difference between both is copy constructor creates a new object and assigns the value but assignment operator does not create a new object, instead it assigns the value to the data member of the same object.
+Destructor:	
+A destructor works opposite to constructor; it destructs or destroy the objects of classes. 
+	It can be defined only once in a class. Like constructors, it is invoked automatically.
+	A destructor is a member function that is invoked automatically when the object goes out of scope or is explicitly destroyed by a call to delete.
+Properties of Destructor:
+	Destructor function is automatically invoked when the objects are destroyed.
+	It cannot be declared static or const.
+	The destructor does not have arguments.
+	It has no return type not even void.
+	An object of a class with a Destructor cannot become a member of the union.
+	A destructor should be declared in the public section of the class.
+	The programmer cannot access the address of destructor.
+	When is destructor called? 
+		A destructor function is called automatically when the object goes out of scope: 
+		(1) the function ends 
+		(2) the program ends 
+		(3) a block containing local variables ends 
+		(4) a delete operator is called  
+	Note:  Destructor can also be called explicitly for an object.
+		syntax: 
+		object_name.~class_name()
+	An explicit call to destructor is only necessary when an object is placed at a particular location in memory. Destructor should not be called explicitly when the object is dynamically allocated because the delete operator automatically calls destructor.
+	Student* objDele = new Student();
+	delete objDele;	
+Virtual Destructor:
+	Deleting a derived class object using a pointer of base class type that has a non-virtual destructor results in undefined behavior. To correct this situation, the base class should be defined with a virtual destructor. 
+	Making base class destructor virtual guarantees that the object of derived class is destructed properly, i.e., both base class and derived class destructors are called.
+Note: Only Destructors can be Virtual. Constructors cannot be declared as virtual, this is because if you try to override a constructor by declaring it in a base/super class and call it in the derived/sub class with same functionalities it will always give an error as overriding means a feature that lets us to use a method from the parent class in the child class which is not possible. 
+
+What is the difference between delete and destructor in C++?
+Whenever a call to destructor is made , the allocated memory to the object is not released but the object is no longer accessible in the program. But delete completely removes the object from memory.
+
+What is the use of Destructor in C++?
+The constructor is used for initialization purposes. It is also used for allocating resources. Then what is the use of a Destructor in C++? 
+It is used for deallocating resources or releasing resources. We don’t have to de-initialize, we have to deallocate the resources. 
+Which type of resources? External things. When you are acquiring any external things like heap memory, file, network connection, etc. these are all external sources. If your class acquires any of them then it should release.
+
+Static Vatriable Types - Static Data Member  - Static Member Function
+		When the static keyword preceded the declaration of a variable, that variable becomes a static variable.
+		If it is declared inside of a class, all instances of the class (i.e. objects) will share the same copy of the variable, 
+		and we can access it without any object by class name outside the class.
+		If it is declared inside of a function then its value is preserved between successive calls for the lifetime of the program, 
+		but it cannot be accessd outside the scope or function in which it is declared.   
+
+Encapsulation: Encapsulation in C++ is defined as the wrapping up of data and information in a single unit.
+	    Two Important  property of Encapsulation 
+		1. Data member and variables are declared private so to provide security.
+		2. Member function should be declared public so that anyone can’t change and work according to that function
+This keyword: Initialize value of class member name as the parameter name passed in the function.
+ 	
+Stack and Heap allocation in cpp
+Gloabl and static variable   
+			--> Scope: A global variable can be accessed from any function or file in the program, 
+			    while a static variable is only visible within the function or block where it is defined.
+			--> Lifetime: A global variable exists for the entire lifetime of the program, while a static 
+			    variable exists for the lifetime of the program but its value persists even after the function 
+			     or block in which it is defined exits.
+			--> Initialization: A global variable is initialized to zero or its default value by default,
+			     while a static variable is not initialized by default and must be initialized explicitly.
+Function in polymorshim --> void show(float a, float b,float c=0 ); void show(float n1, float n2);
+ 			-->The compiler cannot distinguish between them. Both functions take two float arguments,
+			   the default argument of third variable is 0
+Variable Naming Convention in cpp: Names in the program are the key to program readability. If the name is appropriate 
+				   in a program, then everything fits together and relationships are clear, meaning is 
+				   derivable. C++ uses CamelCase as a practice for writing names of methods, variables, 
+				   classes, packages, and constants. 
+
+What is Abstraction: 
+--> Abstraction is the one of the most important features of oops which is showing only the essential information to the outside world and hiding the internal details.
+We can doing abstraction with three ways   
+1.Using Class,
+2. Using Headder file 
+3. Access specifier
+
+Pointer To Pointer:
+Pointers as function arguments - call by reference:
+Character arrays and pointers:
+		1---->How to store Strings in array
+		Syntax:Like as:
+			char c[] = "John"; //String Litral	//Null Termination done by implesit
+			char c[] = {'J','o','h','n','\0'};  //Null termination done by explesit
+			char c[];
+			c[0]='J';c[1]='O';c[2]='H';c[3]='N';c[4]='\0'(NULL Character);
+		2---->Arrays and Pointers are differents type that are used in similar manner
+		Syntax:
+			char c1[6] = "Hello";
+			char* c2;
+			c2 = c1;
+			c2[0] = 'A' //Modifying the char array
+			c2[i] is *(c2 + i)
+			c1[i] or *(c1 + i)
+		3-----> Array are always passed to function by reference
+		
+Void pointer:   A void pointer is a general-purpose pointer that can hold the address of any data type, but it is not associated with any data type.This is also called Genric Pointer
+		Syntax of void pointer
+		void *ptr;
+Linked List:
+Loops 	Types:
+	Entry Controlled loop
+	- For loop -  Firstly initializes, then, condition check, execute body, update.
+	- While loop - First checks the condition, then executes the body.
+	Exit Controlled loop
+	- Do-While loop - Firstly, execute the body then condition check
+printArray:
+void printArray(int arr[], int size);
+void printArray(int arr[], int size)
+{
+	cout << "Array elements are :";
+	for (int i = 0; i < size; i++)
+		cout << arr[i] << " ";
+	cout << endl;
+}
+printArray(arr, size);
+Linked List
+void insertAtHead(node*& head, int val);
+void insertAtHead(node*& head, int val) {
+ 	node* ptr = new node(val);
+ 	ptr->next = head;
+ 	head = ptr;
+}
+cout << "After inserting the elements on head ";
+insertAtHead(head, 6);
+	display(head);
+
+Search in linked list:
+bool search(Node* head,int key){
+node* temp=head;
+while(temp!=NULL){
+if(temp->data==key){
+return true;
+}
+temp=temp->next;
+}
+return false;
+}
+//Reverse the Linked list using recursive methods :
+node* recursivReverse(node*& head) {
+	node* newHead = recursivReverse(head->next);
+
+	if (head == NULL || head->next == NULL) {
+		return head;
+	}
+	head->next->next = head;
+	head->next = NULL;
+
+	return newHead;
+}
+cout << "Reverse the Linked list using recursive methods : ";
+	node* newhead1 = recursivReverse(head);
+	display(newhead1);
+
+
+Linked List:
+//Insert at any index in the linked list and find the position
+void LinkedList::insertAtAnyIndex(int data, int pos) {
+	Node* newNode = new Node(data);
+	newNode->data = data;
+	newNode->next = NULL;
+	if (head == NULL) {
+		head = newNode;
+	}
+	else if (pos == 0) { // if the node is to be inserted at the beginning of the list
+		newNode->next = head;
+		head = newNode;
+	}
+	else {
+		Node* current = head;
+		int i = 0;
+		while (i < pos - 1 && current != NULL) {
+			current = current->next;
+			i++;
+		}
+		if (current == NULL) { // if the index is greater than the size of the list
+			cout << "out of range and the previous list is ";
+			delete newNode;
+		}
+		else {
+			newNode->next = current->next;
+			current->next = newNode;
+		}
+	}
+}
+2nd Function of insert the data at any index in the linked list
+void LinkedList::insertAtAnyIndex(int data, int pos){
+	Node* newNode = new Node(data);
+	Node* temp = head;
+	if (head == NULL) {
+		head = newNode;
+	}
+	for (int i = 2; i < pos; i++) {
+		if (temp->next != NULL) {
+			temp = temp->next;
+		}
+	}
+	newNode->next = temp->next;
+	temp->next = newNode;
+}
+
+19/05:-
+Debug the code and write a code for 
+seekg:seekg () is a function in the iostream library that allows you to seek an arbitrary position in a file. 
+tellg:The tellg() function is used with input streams, and returns the current “get” position of the pointer in the stream. 
+	  It has no parameters and returns a value of the member type pos_type, which is an integer data type representing the 
+	  current position of the get stream pointer.
+size_t can store the maximum size of a theoretically possible object of any type (including array). A type whose size 
+	 cannot be represented by std::size_t is ill-formed.
+lock_guard<mutex> lock(mtx): 
+
+
+25-26/05
+Friend Class and Friend Function:
+Friend Class:
+A friend class can access private and protected members of other classes in which it is declared as a friend. It is sometimes useful to allow a particular class to access private and protected members of other classes. For example, a LinkedList class may be allowed to access private members of Node.
+
+We can declare a friend class in C++ by using the friend keyword.
+
+Syntax:
+
+friend class class_name;    // declared in the base class
+
+Friend Function:
+
+A friend function can be granted special access to private and protected members of a class in C++. They are the non-member functions that can access and manipulate the private and protected members of the class for they are declared as friends.
+
+A friend function can be:
+A global function
+A member function of another class
+
+Syntax:
+friend return_type function_name (arguments);    // for a global function
+            or
+friend return_type class_name::function_name (arguments);    // for a member function of another class
+
+Features of Friend Functions
+ A friend function is a special function in C++ that in spite of not being a member function of a class has the privilege to access the private and protected data of a class.
+A friend function is a non-member function or ordinary function of a class, which is declared as a friend using the keyword “friend” inside the class. By declaring a function as a friend, all the access permissions are given to the function.
+The keyword “friend” is placed only in the function declaration of the friend function and not in the function definition or call.
+A friend function is called like an ordinary function. It cannot be called using the object name and dot operator. However, it may accept the object as an argument whose value it wants to access.
+A friend function can be declared in any section of the class i.e. public or private or protected.
+
+Polymorphism Storing type information:
+#include 
+<iostream> 
+using namespace std; 
+class NoVirtual 
+{ 
+	int a; 
+	public: 
+	void x() {} 
+	int i() { return 1; } 
+}; 
+class OneVirtual 
+{ 
+	int a; 
+	public: 
+	virtual void x() {} 
+	int i() { return 1; } 
+}; 
+class TwoVirtuals { 
+	int a; 
+	public: 
+	virtual void x() {} 
+	virtual int i() { return 1; } 
+}; 
+int main() { 
+	cout << "int: " << sizeof(int) << endl; 
+	cout << "NoVirtual: " << sizeof(NoVirtual) << endl; 
+	cout << "void* : " << sizeof(void*) << endl; 
+	cout << "OneVirtual: " << sizeof(OneVirtual) << endl; 
+	cout << "TwoVirtuals: " << sizeof(TwoVirtuals) << endl; 
+}

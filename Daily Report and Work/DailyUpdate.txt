@@ -1,0 +1,8 @@
+Daily Task Update in DSU
+Yesterday, I was working on.
+ Pure Virtual Function and Increment operator overloading
+Purpose
+Use case.
+Solutions
+​I have reviewed code with @Prasanna Kumbhare ​ ​and he assign me new topic related to Private and Protected inheritance.
+​

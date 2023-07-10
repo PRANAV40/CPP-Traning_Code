@@ -1,0 +1,30 @@
+Project Innovation Traning Session:-
+Day 1:-
+Pick a market place from following and research on it. Also make a documentation:-
+Jira market place
+AWS market place
+Azure market place
+
+
+Panorama Necto - Business Intelligence from Azure market place
+Panorama Necto is a self-service smart business intelligence software which leverages an engine that 
+automatically simplifies the business users’ exploration and analysis. This results in better and faster 
+answers, from the hidden value of the enterprise data improving both productivity and decisions. Panorama 
+Necto provides the users with Automatic Insights on 100% of your data Panorama Necto is the first 
+Business Intelligence solution that provides business users with a smart, personalized and collaborative 
+data discovery experience, presented via highly visual, dynamic Infographics, allowing any user to find and 
+share hidden insights in a governed environment. Panorama Necto is a revolutionary Smart Dark Data Discovery 
+& Visualization platform that has the ability to connect data, insights, and people across your entire 
+organization.
+
+
+Day 2:-
+Minimum Viable Product Session:-
+Make the road map for basic feature of idea and break down into parts.
+Create a list of feature and research on it.
+How to create MVPs, components of any product?
+
+Day 3:-
+Figma Team Meeting:-
+Discuss with team on 
+Take idea from left employee

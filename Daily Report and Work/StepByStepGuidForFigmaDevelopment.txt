@@ -1,0 +1,15 @@
+How to build own plugin for figma using which tech stack?
+
+Here's a step-by-step guide to get you started:
+
+Figma Plugin API: The Figma Plugin API is a crucial component for building Figma plugins. It provides access to Figma's design data, allows you to manipulate designs programmatically, and retrieve information for comparison purposes.
+
+JavaScript: JavaScript is the primary language used for developing Figma plugins. It allows you to interact with the Figma Plugin API and write the logic for comparing designs. JavaScript is well-supported and widely used in the Figma plugin development community.
+
+HTML and CSS: HTML is used for creating the user interface (UI) of your plugin, while CSS is used for styling and layout. You can build a visually appealing UI to display the compared designs side by side and highlight the differences between them.
+
+Figma Plugin SDK: The Figma Plugin SDK is a set of tools and utilities that simplifies plugin development. It provides a convenient interface for working with the Figma Plugin API, handling events, and accessing design elements. You can use the Figma Plugin SDK to streamline the development process and improve efficiency.
+
+Build Tools: Utilize build tools like Webpack, Parcel, or Rollup to bundle your plugin's JavaScript, HTML, and CSS files. These tools can optimize your code, handle dependencies, and generate a distributable bundle for your plugin.
+
+The combination of JavaScript, HTML, CSS, the Figma Plugin API, and the Figma Plugin SDK will provide a solid foundation for building a plugin that can compare two designs within the Figma editor. Be sure to consult the Figma Plugin documentation and API references for detailed instructions and examples as you develop your plugin.

@@ -1,0 +1,234 @@
+ user = input("Enter the github user: ")
+ user_info = get_github_use_info(user)
+ print(user_info)
+ document = Document()
+
+ if user_info:
+     name = user_info[0]['name']
+     login = user_info[0]['login']
+     ids = user_info[0]['id']
+     node_id = user_info[0]['node_id']
+     avatar_url = user_info[0]['avatar_url']
+
+     document.add_heading(name, level=1)
+     document.add_paragraph(f"Login:{login}")
+     document.add_paragraph(f"Id: {ids}")
+     document.add_paragraph(f"Node Id: {node_id}")
+     document.add_paragraph(f"Avatar_Url:{avatar_url}")
+ else:
+     document.add_paragraph("User Not Found:")
+
+
+ document.save(f"{user}_info.docx")
+
+
+BSE API
+1st Method to export the data in to excel_file
+ with open(log_file, 'r') as file:
+     for line in file:
+         line = line.strip()
+         if line.startswith('Company Name:'):
+             company_name = line.split(': ')[1]
+         elif line.startswith('Deviation of Stocks:'):
+             deviation = line.split(': ')[1]
+         elif line.startswith('Profit/Loss Percentage of Stocks:'):
+             profit_loss_percentage = line.split(': ')[1]
+         elif line.startswith('Current Stock Price(LTP):'):
+             current_price = line.split(': ')[1]
+             high_price = line.split(': ')[1]
+             low_price = line.split(': ')[1]
+             log_data.append([company_name, deviation, profit_loss_percentage, current_price, high_price, low_price])
+ column_names = ['Company Name', 'Deviation of Stocks', 'Profit/Loss Percentage', 'Current Stock Price(LTP)',
+                 'High Price', 'Low Price']
+ df = pd.DataFrame(log_data, columns=column_names)
+ df.to_excel(excel_file, index=False)
+
+2nd Method to export the data in to excel_file
+ with open(log_file, 'r') as file:
+     log_entry = {}
+     for line in file:
+         line = line.strip()
+         if ':' in line:
+             key, value = line.split(':', 1)
+             log_entry[key.strip()] = value.strip()
+         else:
+             log_data.append(log_entry)
+             log_entry = {}
+ df1 = pd.DataFrame(log_data)
+ df1.to_excel(excel_file, index=False)
+
+
+3rd Method to export the data in to excel_file
+ log_file = 'profit_loss.log'
+ excel_file = 'log_data_file.xlsx'
+ log_data = []
+ with open(log_file, 'r') as file:
+     for line in file:
+         line = line.strip()
+         if line.startswith('Company Name:'):
+             company_name = line.split(': ')[1]
+         elif line.startswith('Deviation of Stocks:'):
+             deviation = line.split(': ')[1]
+         elif line.startswith('Profit/Loss Percentage of Stocks:'):
+             profit_loss_percentage = line.split(': ')[1]
+         elif line.startswith('Current Stock Price(LTP):'):
+             current_price = line.split(': ')[1]
+         elif line.startswith('High Price of Stocks in a Day:'):
+             high_price = line.split(': ')[1]
+         elif line.startswith('Low Price of Stocks in a Day:'):
+             low_price = line.split(': ')[1]
+             log_data.append([company_name, deviation, profit_loss_percentage, current_price, high_price, low_price])
+ column_names = ['Company Name', 'Deviation of Stocks', 'Profit/Loss Percentage', 'Current Stock Price(LTP)',
+                 'High Price', 'Low Price']
+ df = pd.DataFrame(log_data, columns=column_names)
+ df.to_excel(excel_file, index=False)
+ print('Report file generated successfully. Please check "log_data_file.xlsx" for details.')
+
+
+1st method to connect the MongoDB
+Database code in MongoDB
+ client=MongoClient("mongodb+srv://pranav2000mishra:PM@409940@cluster0.dmwle4q.mongodb.net/?retryWrites=true&w=majority")
+ db = client.get_database('api_data_db')
+ records = db.stocks_records
+ records.count_documents({})
+
+2nd method to connect the MongoDB
+from pymongo import MongoClient
+from urllib.parse import quote_plus
+username = "pranav2000mishra"
+password = "PM@409940"
+cluster_url = "cluster0.dmwle4q.mongodb.net"
+database_name = "api_data_db"
+escaped_username = quote_plus(username)
+escaped_password = quote_plus(password)
+url = f"mongodb+srv://{escaped_username}:{escaped_password}@{cluster_url}/{database_name}?retryWrites=true&w=majority"
+client = MongoClient(url)
+db = client.get_database(database_name)
+records = db.stocks_records
+document_count = records.count_documents({})
+print("Number of documents:", document_count)
+
+
+Mail sender with attachement using Python
+filename = "log_data_file.xlsx"
+
+with open(filename, 'rb') as attachment:
+    part = MIMEBase("application", "octet-stream")
+    part.set_payload(attachment.read())
+encoders.encode_base64(part)
+part.add_header(
+    "Content-Disposition",
+    f"attachment; filename= {filename}",
+)
+message.attach(part)
+ text = message.as_string()
+
+
+ context = ssl.create_default_context()
+ with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
+     server.sendmail(sender_mail_id, receiver_mail_id, message)
+
+
+Another Methods to import log file
+ import pandas as pd
+ from bsedata.bse import BSE
+ import logging
+ from bsedata.exceptions import InvalidStockException
+
+
+ def get_stock_code(company_name, stock_data):
+     for code, name in stock_data.items():
+         if name == company_name:
+             return code
+     return None
+
+
+ def get_current_price(stock_code, bse):
+     try:
+         stock_info = bse.getQuote(stock_code)
+         current_price = stock_info['currentValue']
+         high_price = stock_info['dayHigh']
+         low_price = stock_info['dayLow']
+         return current_price, high_price, low_price
+     except InvalidStockException:
+         return None, None, None
+
+
+ def generate_profit_loss(self):
+     df = pd.read_csv(csv_file)
+     bse = BSE()
+     stock_data = bse.getScripCodes()
+     # print(stock_data)
+     logging.basicConfig(filename='profit_loss.log', level=logging.INFO, format='%(message)s')
+     total_purchase_amount = 0
+     total_current_amount = 0
+     for index, row in df.iterrows():
+         company_name = row['Company Name']
+         rate_per_share = row['Rate per Share']
+         quantity = row['Quantity']
+         stock_code = get_stock_code(company_name, stock_data)
+         if stock_code is None:
+             logging.error(f'Stock code not found for company: {company_name}. Please check you csv file')
+             continue
+         current_prices, high_prices, low_prices = get_current_price(stock_code, bse)
+         if current_prices is None:
+             logging.error(f'Unable to fetch current price of company: {company_name}.')
+             continue
+         rate_per_share = float(rate_per_share)
+         quantity = int(quantity)
+         purchase_amount = rate_per_share * quantity
+         current_amount = float(current_prices) * quantity
+         deviation = current_amount - purchase_amount
+         total_purchase_amount += purchase_amount
+         total_current_amount += current_amount
+         profit_loss_percentage = (deviation / purchase_amount) * 100
+         logging.info(f'Company Name: {company_name}\n'
+                      f'Deviation of Stocks: {deviation:.2f}\n'
+                      f'Profit/Loss Percentage of Stocks: {profit_loss_percentage:.2f}%\n'
+                      f'Current Stock Price(LTP): {current_prices}\n'
+                      f'High Price of Stocks in a Day: {high_prices}\n'
+                      f'Low Price of Stocks in a Day: {low_prices}\n')
+
+     overall_deviation = total_current_amount - total_purchase_amount
+     overall_profit_loss_percentage = (overall_deviation / total_purchase_amount) * 100
+     logging.info(f'Total Deviation of Stocks: {overall_deviation:.2f}\n'
+                  f'Total Profit/Loss Percentage of Stocks: {overall_profit_loss_percentage:.2f}%\n')
+
+
+ print('Report file generated successfully. Please check "profit_loss.log" for details.')
+
+
+ csv_file = 'portfolio.csv'
+ generate_profit_loss(csv_file)
+
+
+
+Data of mail send mail id and receiver mail id
+sender_email_id = 'parkardigital95@gmail.com'
+password = 'qofhykhhcxvuxllu'
+receiver_email_id = input("Enter the receiver mail ID here: ")
+name = input("Enter the receiver name: ")
+
+subject = "File of BSE API Data"
+body = f"Dear {name}, \n \t I have send you a excel file of BSE API data. " \
+       f"\n\nThanks and Regards \nParkar Digital \n5th Floor, C-Wing, Manikchand Ikon,\nBund Garden," \
+       f"Dhole Patil Road,\nPune Maharashtra, 411001."
+	   
+	   filename = "log_data_file.xlsx"
+	   
+	   
+	   
+	   
+	   
+Create the config file for data hiding	   
+config = configparser.ConfigParser()
+
+config["database"] = {
+    "username": "pranav2000mishra",
+    "password": "PM@409940",
+    "cluster_url": "cluster0.dmwle4q.mongodb.net",
+    "database_name": "api_data_db"
+}
+
+with open('config.ini', 'w') as configs:
+    config.write(configs)

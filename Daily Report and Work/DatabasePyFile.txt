@@ -1,0 +1,126 @@
+Database File.py
+1st Methods of connect database
+def connect_to_database():
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+    username = config.get('database', 'username')
+    password = config.get('database', 'password')
+    cluster_url = config.get('database', 'cluster_url')
+    database_name = config.get('database', 'database_name')
+    escaped_username = quote_plus(username)
+    escaped_password = quote_plus(password)
+    url = f"mongodb+srv://{escaped_username}:{escaped_password}@{cluster_url}/{database_name}?retryWrites=true&w=majority"
+    client = MongoClient(url)
+    db = client.get_database(database_name)
+    return db
+	
+	
+2nd methods of connect database
+import configparser
+from pymongo import MongoClient
+from urllib.parse import quote_plus
+
+
+def get_database_connection():
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+    username = config.get('database', 'username')
+    password = config.get('database', 'password')
+    cluster_url = config.get('database', 'cluster_url')
+    database_name = config.get('database', 'database_name')
+    escaped_username = quote_plus(username)
+    escaped_password = quote_plus(password)
+    url = f"mongodb+srv://{escaped_username}:{escaped_password}@{cluster_url}/{database_name}?retryWrites=true&w=majority"
+    client = MongoClient(url)
+    db = client.get_database(database_name)
+    return db
+
+
+def insert_records(records):
+    db = get_database_connection()
+    collection = db.stocks_records
+    collection.insert_many(records)
+
+
+def retrieve_records():
+    db = get_database_connection()
+    collection = db.stocks_records
+    records = collection.find()
+    return list(records)
+	
+	
+Extra Code of database file
+
+# records = db.stocks_records
+# document_count = records.count_documents({})
+# print("Number of documents:", document_count)
+
+# def get_database_connection():
+#     config = configparser.ConfigParser()
+#
+#     username = config.get('database', 'username')
+#     password = config.get('database', 'password')
+#     cluster_url = config.get('database', 'cluster_url')
+#     database_name = config.get('database', 'database_name')
+#
+#     escaped_username = quote_plus(username)
+#     escaped_password = quote_plus(password)
+#     url = f"mongodb+srv://{escaped_username}:{escaped_password}@{cluster_url}/{database_name}?retryWrites=true&w=majority"
+#
+#     client = MongoClient(url)
+#     db = client.get_database(database_name)
+#     return db
+#
+#
+# def insert_records(records):
+#     db = get_database_connection()
+#     collection = db.stocks_records
+#     collection.insert_many(records)
+#
+#
+# def retrieve_records():
+#     db = get_database_connection()
+#     collection = db.stocks_records
+#     records = collection.find()
+#     return list(records)
+
+
+
+# For connecting the database
+# from database import connect_to_database
+# from pymongo import MongoClient
+# from urllib.parse import quote_plus
+#
+# username = "pranav2000mishra"
+# password = "PM@409940"
+# cluster_url = "cluster0.dmwle4q.mongodb.net"
+# database_name = "api_data_db"
+# escaped_username = quote_plus(username)
+# escaped_password = quote_plus(password)
+# url = f"mongodb+srv://{escaped_username}:{escaped_password}@{cluster_url}/{database_name}?retryWrites=true&w=majority"
+# client = MongoClient(url)
+
+# db = client.get_database(database_name)
+# records = db.stocks_records
+# document_count = records.count_documents({})
+# print("Number of documents:", document_count)
+
+#     # For inserting the data in Database
+#     for data in log_data:
+#         document = {
+#             'Company Name': data[0],
+#             'Deviation of Stocks': data[1],
+#             'Profit/Loss Percentage': data[2],
+#             'Current Stock Price(LTP)': data[3],
+#             'High Price': data[4],
+#             'Low Price': data[5]
+#         }
+#     records.insert_one(document)
+#
+#
+# # Database connection
+# db = connect_to_database()
+# records = db.stocks_records
+# document_count = records.count_documents({})
+# print("Number of documents:", document_count)
+

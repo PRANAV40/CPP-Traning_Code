@@ -1,0 +1,124 @@
+Problem1:
+Create a function that takes damage and speed (attacks per second) and returns the amount of damage after a given time.
+Examples
+damage(40, 5, "second") ➞ 200
+damage(100, 1, "minute") ➞ 6000
+damage(2, 100, "hour") ➞ 720000
+
+Solutions of Problem1:
+def calculate_total_damages(damage, speed, time_unit):
+    time_conversion = {"second": 1, "minute": 60, "hour": 3600}
+
+    if time_unit not in time_conversion:
+        return "Invalid Time Unit! Please enter right time_uit"
+    times = time_conversion[time_unit]
+    total_damages = damage * speed * times
+
+    return total_damages
+
+damages = int(input("Enter the damage: "))
+speeds = int(input("Enter the speed: "))
+time_units = str(input("Enter the time units: "))
+print("damage(", damages, speeds, time_units, ")->", 
+	calculate_total_damages(damages, speeds, time_units), end="")
+ 
+Output:
+Examples 1:
+Enter the damage: 40
+Enter the speed: 5
+Enter the time units: second
+damage( 40 5 second )-> 200
+
+Examples 2:
+Enter the damage: 100
+Enter the speed: 1
+Enter the time units: minute
+damage( 100 1 minute )-> 6000
+
+Examples 3:
+Enter the damage: 2
+Enter the speed: 100
+Enter the time units: hour
+damage( 2 100 hour )-> 720000
+
+Problem2:
+Create a function that takes a string and returns the number (count) of vowels contained within it.
+Examples
+count_vowels("Celebration") ➞ 5
+count_vowels("Palm") ➞ 1
+count_vowels("Prediction") ➞ 4
+
+Solutions of Problem2:
+def strings_vowels(strings):
+    count = 0
+    vowels = "aeiouAEIOU"
+
+    for i in strings:
+        if i in vowels:
+            count = count + 1
+    print('count_vowels("', strings, '")->', count)
+
+
+strings_input = input("Enter the strings: ")
+strings_vowels(strings_input)
+
+Output:
+Examples 1:
+Enter the strings: Celebration
+count_vowels(" Celebration ")-> 5
+
+Examples 2:
+Enter the strings: Palm
+count_vowels(" Palm ")-> 1
+
+Examples 3:
+Enter the strings: Prediction
+count_vowels(" Prediction ")-> 4
+
+
+
+Problem 3:
+Solution: 
+l = [1,2,'a','b']
+
+def filter_list(l):
+    new_list = []
+    for x in l:
+        if type(x) == int:
+            new_list.append(x)
+    return new_list
+
+print(filter_list(l))
+
+
+Problem 5:
+string = input("Enter the string: ")
+
+
+def calculate_sum(strings):
+    pos_num = 0
+    neg_num = 0
+    curr_num = ""
+    for i in string:
+        if i.isdigit():
+            curr_num += i
+        else:
+            if curr_num:
+                num = int(curr_num)
+                if num >= 0:
+                    pos_num += num
+                else:
+                    neg_num += num
+            current_number = ""
+    if curr_num:
+        num = int(curr_num)
+        if num >= 0:
+            pos_num += num
+        else:
+            neg_num += num
+    return pos_num, neg_num
+
+
+positive_num, negative_num = calculate_sum(string)
+print("Positive values:", positive_num)
+print("Negative values:", negative_num)

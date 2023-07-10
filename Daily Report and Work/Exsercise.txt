@@ -1,0 +1,122 @@
+// CC: Purpose ::The purpose of a copy constructor in C++ is to create a new object as a copy of 
+	// an existing object of the same class. 
+	// It is a special member function that is used for initializing 
+	// one object with another object of the same class. The copy constructor ensures that the new object has 
+	// the same data as the existing object, providing a deep copy rather than a shallow copy.
+	// Scenario call CC:
+	//Copy Constructor call by Explicit 
+	//Implicit Copy assignment operator call by 
+	//Types of CC:
+	//Default CC  or Implicit CC :Automaticly Created by complier
+	//User-defined CC or Explicit CC : Its define by the user
+
+/*Copy assignment operator
+//Student objShallow4;	             //Implicit Copy assignment operator
+	//objShallow4 = objShallow;	        // When copying the data of object after initialization then the
+	//objShallow4.display();	// copy is done through DEFAULT ASSIGNMENT OPERATOR
+	
+Student& operator =(const Student& t)
+{
+	cout << "Assignment operator called " << endl;
+	return *this;			//return the current class object.
+}
+Student(int mark);
+void display1();
+Student obj = 78.9,obj1;
+	obj1 = obj;
+	obj1.display1();
+
+	Student::Student(int mark) {
+	marks = mark;
+}void Student::display1() {
+	cout << " and marks is " << marks << endl;
+}
+
+//To demonstrate an explicit call
+	Student();// Explicit call to constructor
+	Student localObj;  // local object
+	localObj.~Student();  // Explicit call to destructor
+*/
+//Call By value
+/*
+void OOPs::swap(int num1, int num2) {
+	num1 = num1 + num2;
+	num2 = num1 - num2;
+	num1 = num1 - num2;
+}
+
+Call By reference
+void OOPs::swap(int &num1, int &num2) {
+	num1 = num1 + num2;
+	num2 = num1 - num2;
+	num1 = num1 - num2;
+}
+Driver Code :
+	int main() {
+	int num1=32, num2=34;
+	OOPs objOOPs;
+	objOOPs.swap(num1,num2);
+	cout << "After swapping the two number the number is " << num1 << " and " << num2;
+}
+
+Default and Parameterised constructor
+OOPs() {
+		cout << "Default constructor" << endl;
+	}
+	OOPs(int ids, string names, float mark) {
+		cout << "This is a parameterised constructor " << endl;
+		id = ids;
+		name = names;
+		marks = mark;
+	}
+}
+*/
+
+//This is the example of Virtual Destructor
+	//cout << "Virtual Destructor" << endl;
+	//Exam *objExamVD = new Exam();
+	//Student *objStd = objExamVD;
+	//delete objStd;
+	
+	//This is the example of Virtual Destructor
+	//virtual ~Student() { cout << "Destructing Student\n"; }
+	
+	
+//This class is for Polymorphism
+class Exam : public Student{
+public:
+	int var_derived_Exam = 21;
+	void func();
+	Exam();
+	~Exam();
+};
+
+//This is the example of Virtual Destructor
+Exam::Exam() {
+	cout << "Constructing Exam\n";
+}
+Exam::~Exam() {
+	 cout << "Destructing Exam\n"; 
+}
+
+
+//Virtual Destructor, Pure Virtual Destructor, call constructor and destructor explicitly
+Student obj = 5, obj1;
+	obj1 = obj;
+	obj1.display();
+	Student obj2 = obj1;
+	obj2.display();
+	cout << endl;
+
+	//Virtual Destructor
+	Result* objDer = new Result;	
+	Student* objBase = objDer;
+	delete objBase;
+
+	//Pure Virtual Destructor
+	//Student* objStd = new Result;
+	//delete objStd;
+	//call constructor and destructor explicitly
+	//Student std;		  
+	//Student();			 //Explicit call to constructor
+	//std.~Student();		// Explicit call to destructor

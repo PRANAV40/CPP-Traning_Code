@@ -1,0 +1,24 @@
+    # username = decrypt(config.get('database', 'username'))
+    # password = decrypt(config.get('database', 'password'))
+
+    # from encryption import encrypt, decrypt
+
+
+    # config = configparser.ConfigParser()
+    # config.read('config.ini')
+    # username = config.get('database', 'username')
+    # password = config.get('database', 'password')
+    # import os
+# import configparser
+
+# import configparser
+    # config = configparser.ConfigParser()
+    # config.read('config.ini')
+    # username = config.get('database', 'username')
+    # password = config.get('database', 'password')
+
+
+config.ini
+[database]
+username = pranav2000mishra
+password = PM@409940

@@ -1,0 +1,28 @@
+Shortcut keys for debuging:
+How to debug the code: 
+Link for debuging: 
+https://learn.microsoft.com/en-us/visualstudio/debugger/quickstart-debug-with-cplusplus?view=vs-2022
+Breakpoint: F9
+Break All: ctrl + Alt + Break
+Stop: Shift + f5
+Restart: ctrl + Shift + f5
+Step Into: f11 	
+Step over: f10
+Step out: Shift + 10
+
+
+Which headder is inheriting in main file?
+If we add main file in a project then we can not add the headder of .cpp file we can only add .h file of the project.
+
+what happen with pointer when we delete the object in c++?
+call of an object of a class type without appropriate operator() or conversion functions to pointer-to-function type in cpp
+A program that dereferences a pointer after the object is deleted can have unpredictable results or crash. When delete is used to deallocate memory for a C++ class object, the object's destructor is called before the object's memory is deallocated.
+
+Why we can not access the Base class Parameterized Constructor using derived class object?
+	//constructor initializer list
+		Exam :: Exam(int marksOfSub) : Student(marksOfSub) //For accessing the Base class Parameterized Constructor we write the Class_name(pass_the_argument_of derived class)
+		
+Why do destructor gets called even if I don't call them with delete?
+Because it is the C++ guarantee, that when an object gets destroyed, its destructor is called. It doesn't matter whether the object was created on the heap with "new", or on the stack like you did in your example.
+If that didn't happen, you could not rely on the destructor to reliably release resources allocated by the object.
+Even if there was an exception causing you to leave the current function, the destructors of all the objects created on the stack by the functions called since the catch will be called.

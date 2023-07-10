@@ -1,0 +1,49 @@
+string = input("Enter the string: ")
+
+
+def calculate_sum(strings):
+    pos_num = 0
+    neg_num = 0
+    curr_num = ""
+    for i in string:
+        if i.isdigit():
+            curr_num += i
+        else:
+            if curr_num:
+                num = int(curr_num)
+                if num >= 0:
+                    pos_num += num
+                else:
+                    neg_num += num
+            current_number = ""
+    if curr_num:
+        num = int(curr_num)
+        if num >= 0:
+            pos_num += num
+        else:
+            neg_num += num
+    return pos_num, neg_num
+
+
+positive_num, negative_num = calculate_sum(string)
+print("Positive values:", positive_num)
+print("Negative values:", negative_num)
+
+
+Convert Comprehension:
+no_of_list = int(input("How many items add in a list: "))
+input_string = input("Enter a list element separated by space ")
+list = input_string.split()
+t = int(input("Which type of comprehension you use 1. List Comprehension 2.Dictionary Comprehension 3. Set Comprehension "))
+if t==1:
+    ls = [i for i in list]
+    print(ls)
+    print(type(ls))
+elif t==2:
+    dict1 = {f'item{i}': i for i in list}
+    print(dict1)
+    print(type(dict1))
+elif t==3:
+    s ={i for i in list}
+    print(s)
+    print(type(s))

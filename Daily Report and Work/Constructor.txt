@@ -1,0 +1,181 @@
+#In this program there are toatal default constructor , parameterised constructor, Copy Constructor Copy Assignment Operator overload, destructor and destructor using dynamic memory allocation.
+#pragma once
+#include<iostream>
+#include "string.h"
+using namespace std;
+class Student 
+{
+	int* rollNo;    //Dynamically allocated memory.
+	string name;
+	float marks;
+	int noOfSubject;     //How many subject student take
+	float* subMarks;       //  60, 70,66, 70
+	char* result;        //Result is good
+public:
+	Student();
+	Student(int rollNos, string name);
+	Student& operator=(const Student& t);	
+	Student(const Student& objstudent);    
+	~Student();
+	char* getValue();
+	Student(const char* str);
+	Student(int subjects);
+	void setValue(int subjects, float mark);
+	float getValue(int subjects);
+	void update();
+	void display();
+};
+
+#include "CopyConstructor.h"
+
+Student::Student() //Default Constructor Difinition
+{
+	rollNo = new int;		//Dynamically allocated memory.
+	*rollNo = 0;
+	name = " ";
+	//marks = 0;
+}
+
+Student::Student(int rollNos, string names)
+{
+	rollNo = new int;
+	*rollNo = rollNos;		//Dynamically allocated memory.
+	name = names;
+	//marks = mark;
+}
+Student::Student(const Student& objstudent)
+{
+	cout << "Copy constructor called " << endl;
+	rollNo = new int;		//Dynamically allocated memory.
+	*rollNo = *(objstudent.rollNo);
+	name = objstudent.name;
+	//marks = objstudent.marks;
+}
+Student& Student:: operator=(const Student& t)
+{
+	cout << "Assignment operator called " << endl;
+	rollNo = new int;		//Dynamically allocated memory.
+	*rollNo = *(t.rollNo);
+	name = t.name;
+	//marks = t.marks;
+	return *this;			//return the current class object.
+}
+
+Student::~Student() {
+	delete rollNo;
+	cout << "RollNo int is free" << endl;	
+	delete[] result;
+	cout << "Result char is free" << endl;
+	delete[] subMarks;
+	cout << "Float array is free" << endl;
+}
+
+char* Student::getValue() {
+	return result;
+}
+
+Student::Student(const char* str) {
+	rollNo = new int;		//Dynamically allocated memory.
+	*rollNo = 0;
+	name = "....";
+	//marks = 0;
+	int noOfSubjects = strlen(str) + 1;
+	result = new char[noOfSubjects];
+	strcpy(result, str);
+}
+
+Student::Student(int subjects)
+{
+	rollNo = new int;		//Dynamically allocated memory.
+	*rollNo = 0;
+	name = "....";
+	//marks = 0;
+	noOfSubject = subjects;
+	subMarks = new float[noOfSubject];
+}
+void Student::setValue(int index, float value)
+{
+	if (index >= 0 && index < noOfSubject)
+	{
+		subMarks[index] = value;
+	}
+}
+float Student::getValue(int index)
+{
+	if (index >= 0 && index < noOfSubject)
+	{
+		return subMarks[index];
+	}
+	return 0.0f; // Return a default value if index is out of bounds
+}
+void Student::update()
+{
+	*rollNo = *rollNo + 1;
+	//marks = marks + 1;
+	name = "Raj";
+	noOfSubject = noOfSubject + 1;
+}
+
+void Student::display()
+{
+	cout << "The roll No of student is "
+		<< *rollNo << " , the name of student is "
+		<< name<<" and total percentage of student in all subject " 
+		<< marks <<endl;
+}
+
+#include "CopyConstructor.h"
+
+int main() {
+	//Copy Constructor
+	//Student objShallow = Student(111, "Rituu", 78.9);		// Explicit  call of Constructoro
+	Student objShallow(111, "Rituu");
+	objShallow.display();
+
+
+	Student objShallow1(objShallow);	       // Copy constructor called implicit
+	objShallow1.display();				 
+	cout << endl;
+											 //The below created object is a example of Shollow copy
+	Student objShallow3 = objShallow;		//calls the copy constructor 
+	objShallow3.display();				   // then copy is made through user defined COPY CONSTRUCTOR
+	cout << endl;
+								
+	Student objShallow4;	              //Implicit Copy assignment operator
+	objShallow4 = objShallow;	         // calls the assignment operator.
+	objShallow4.display();				// When copying the data of object after initialization then the
+	cout << endl;					   // copy is done through DEFAULT ASSIGNMENT OPERATOR
+
+	cout << "The shallow copy is working here:" << endl;
+	objShallow.update();
+	objShallow.display();
+	cout << endl;
+
+	cout << "The deep copy is working here:" << endl;
+	objShallow1.display();
+	cout << endl;
+
+	int noOfSubject;
+	cout << "Enter the number of subjects taken by the student: ";
+	cin >> noOfSubject;
+
+	Student array(noOfSubject);
+	for (int i = 0; i < noOfSubject; i++) {
+		float marks;
+		cout << "Enter the marks of subject" << i << ":";
+		cin >> marks;
+		array.setValue(i, marks);
+	}
+	cout << "All subject marks: ";
+	for (int i = 0; i < noOfSubject; i++) 
+	{
+		cout << array.getValue(i) << " ";
+	}
+	cout << endl;
+
+	const char* str = "You are Pass";
+	Student pointer(str);
+	cout << "The final result is: " << pointer.getValue() << endl;
+
+	return 0;
+}
