@@ -1,0 +1,9 @@
+﻿  Semaphores.cpp
+  The contents of <semaphore> are available only with C++20 or later.
+C:\Users\pranav.mishra\Desktop\VS 2019\Semaphores\Semaphores.h(8,19): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\pranav.mishra\Desktop\VS 2019\Semaphores\Semaphores.h(8,27): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\pranav.mishra\Desktop\VS 2019\Semaphores\Semaphores.cpp(5,9): error C2228: left of '.acquire' must have class/struct/union
+C:\Users\pranav.mishra\Desktop\VS 2019\Semaphores\Semaphores.cpp(5,9): message : type is 'int'
+C:\Users\pranav.mishra\Desktop\VS 2019\Semaphores\Semaphores.cpp(14,20): error C2065: 'criticalSectionfun': undeclared identifier
+C:\Users\pranav.mishra\Desktop\VS 2019\Semaphores\Semaphores.cpp(15,20): error C2065: 'criticalSectionfun': undeclared identifier
+C:\Users\pranav.mishra\Desktop\VS 2019\Semaphores\Semaphores.cpp(16,20): error C2065: 'criticalSectionfun': undeclared identifier
