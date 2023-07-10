@@ -1,0 +1,7 @@
+﻿  Stash2.cpp
+  Stash2Test.cpp
+C:\Users\pranav.mishra\Desktop\VS 2019\StashWithDestructor\Stash2Test.cpp(1,1): warning C4335: Mac file format detected: please convert the source file to either DOS or UNIX format
+C:\Users\pranav.mishra\Desktop\VS 2019\StashWithDestructor\Stash2Test.cpp(1,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Generating Code...
+MSVCRTD.lib(exe_main.obj) : error LNK2019: unresolved external symbol _main referenced in function "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
+C:\Users\pranav.mishra\Desktop\VS 2019\CopyConstructor1\Debug\StashWithDestructor.exe : fatal error LNK1120: 1 unresolved externals
